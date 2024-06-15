@@ -18,6 +18,7 @@ function Volunteer({ volunteer }) {
     village_assigned,
     number_of_family_visited,
   } = volunteer;
+  
   const navigate = useNavigate();
 
   const handleCreateClick = () => {
