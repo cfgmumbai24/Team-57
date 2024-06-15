@@ -35,6 +35,12 @@ const signupUser = async (req, res) => {
     const user = await User.signup(fullName, email, password, role)
 
     const token = createToken(user._id)
+    if(role==="volunteer"){
+      const volunteer = new Volunteer(fullName, villageAssigned, email)
+    }
+    else{
+      const admin = new Admin(fullName, email)
+    }
 
 
     res.status(200).json({ email, token, fullName, role, villageAssigned})
