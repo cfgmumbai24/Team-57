@@ -2,8 +2,6 @@
 const express = require("express");
 const router = express.Router();
 const goatController = require("../controllers/goatcontroller");
-
-// Create a new goat
 router.post("/", goatController.createGoat);
 
 // Get all goats

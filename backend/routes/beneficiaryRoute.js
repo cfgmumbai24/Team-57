@@ -2,12 +2,10 @@
 
 const express = require("express");
 const router = express.Router();
-const beneficiaryController = require("./beneficiaryController");
-
-router.post("/beneficiaries", beneficiaryController.createBeneficiary);
-router.get("/beneficiaries", beneficiaryController.getAllBeneficiaries);
-router.get("/beneficiaries/:id", beneficiaryController.getBeneficiaryById);
-router.put("/beneficiaries/:id", beneficiaryController.updateBeneficiary);
-router.delete("/beneficiaries/:id", beneficiaryController.deleteBeneficiary);
-
+const beneficiaryController = require("../controllers/beneficiaryController");
+router.post("/", beneficiaryController.createBeneficiary);
+router.get("/", beneficiaryController.getAllBeneficiaries);
+router.get("/:id", beneficiaryController.getBeneficiaryById);
+router.put("/:id", beneficiaryController.updateBeneficiary);
+router.delete("/:id", beneficiaryController.deleteBeneficiary);
 module.exports = router;

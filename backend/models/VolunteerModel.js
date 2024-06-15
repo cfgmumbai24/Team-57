@@ -24,7 +24,7 @@ const volunteerSchema = new Schema(
     },
     numberOfFamilyVisited: {
       type: Number,
-      required: true,
+      default: 0,
     },
     email: {
       type: String,
@@ -35,11 +35,6 @@ const volunteerSchema = new Schema(
         message: (props) => `${props.value} is not a valid email!`,
       },
     },
-    query: {
-      type: String,
-      required: true,
-    },
-
   },
   { timestamps: true }
 );
