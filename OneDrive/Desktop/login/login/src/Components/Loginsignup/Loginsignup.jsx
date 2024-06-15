@@ -4,6 +4,29 @@ import './Loginsignup.css';
 function Loginsignup() {
     const [action, setAction] = useState("Sign Up");
     const [role, setRole] = useState("Volunteer");
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const handleSubmit = () => {
+        if (action === "Sign Up" && name === "") {
+            setErrorMessage("Please fill out the name field.");
+            return;
+        }
+        if (email === "") {
+            setErrorMessage("Please fill out the email field.");
+            return;
+        }
+        if (password === "") {
+            setErrorMessage("Please fill out the password field.");
+            return;
+        }
+        
+        // Proceed with the signup/login process
+        setErrorMessage("");
+        console.log("Form submitted successfully");
+    };
 
     return (
         <div className='container'>
@@ -18,7 +41,13 @@ function Loginsignup() {
                     <>
                         <div className="input">
                             <i className="fa-solid fa-user" />
-                            <input type="text" className='user_input' placeholder='Name'></input>
+                            <input 
+                                type="text" 
+                                className='user_input' 
+                                placeholder='Name'
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                            />
                         </div>
                         <div className="radio-group">
                             <label htmlFor="volunteer">
@@ -36,18 +65,32 @@ function Loginsignup() {
                 }
                 <div className="input">
                     <i className="fa-solid fa-envelope" />
-                    <input type="email" className='user_input' placeholder='Email id'></input>
+                    <input 
+                        type="email" 
+                        className='user_input' 
+                        placeholder='Email id'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
                 </div>
                 <div className='input'>
                     <i className="fa-solid fa-lock" />
-                    <input type="password" className='user_input' placeholder='Password'></input>
+                    <input 
+                        type="password" 
+                        className='user_input' 
+                        placeholder='Password'
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
                 </div>
             </div>
-            {action === "Sign Up" ? <div></div> : 
-                <div className="forget-pswd">Forget Password? <span>Click Here</span></div>
+            {errorMessage && <div className="error-message">{errorMessage}</div>}
+            {action === "Login" ? 
+                <div className="forget-pswd">Forget Password? <span>Click Here</span></div> : 
+                <div></div>
             }
             <div className="submit-container">
-                <div className={action === "Login" ? "submit gray" : "submit"} onClick={() => {
+                <div className={action === "Sign Up" ? "submit" : "submit gray"} onClick={() => {
                     setAction("Sign Up")
                 }}>
                     Sign Up
@@ -57,6 +100,9 @@ function Loginsignup() {
                 }}>
                     Login
                 </div>
+            </div>
+            <div className="submit" onClick={handleSubmit}>
+                {action === "Sign Up" ? "Submit" : "Submit"}
             </div>
         </div>
     )
