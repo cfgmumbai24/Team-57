@@ -1,68 +1,121 @@
-import React from 'react';
-import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import React from "react";
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import { useNavigate } from "react-router-dom";
 
-function Volunteer({ volunteerName }) {
+function Volunteer({ volunteer }) {
+  const {
+    id,
+    name,
+    contactNumber,
+    email,
+    imageUrl,
+    village_assigned,
+    number_of_family_visited,
+  } = volunteer;
+  const navigate = useNavigate();
+
+  const handleCreateClick = () => {
+    navigate("/beneficiary/create");
+  };
+
+  const handleUpdateClick = () => {
+    navigate("/beneficiary/update");
+  };
+
+  const handleReadClick = () => {
+    navigate("/beneficiary/read");
+  };
+
+  const handleDeleteClick = () => {
+    navigate("/beneficiary/delete");
+  };
+
   return (
     <div>
-      {/* Navbar */}
-      <Navbar bg="primary" variant="dark" expand="lg" className="mb-3">
+      <Navbar bg="success" variant="dark" expand="lg" className="mb-3">
         <Container>
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="">Add a Query</Nav.Link>
             </Nav>
             <Nav>
               <Nav.Item>
-                <Nav.Link disabled>Welcome, {volunteerName}</Nav.Link>
+                <Nav.Link>Welcome, {name}</Nav.Link>
               </Nav.Item>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
 
-      {/* Content */}
-      <Container className="mt-3">
-        {/* Card */}
-        <Row className="mb-3">
-          <Col>
-            <Card style={{ width: '18rem' }} className="m-5">
-              <Card.Img variant="top" src="src/assets/img.webp" /> {/* Replace with actual image path */}
+      <Container
+        className="d-flex flex-column align-items-center justify-content-center"
+        style={{ height: "80vh" }}
+      >
+        <Row className="mb-3 w-100 justify-content-center">
+          <Col md={6} className="d-flex justify-content-center">
+            <Card style={{ width: "18rem" }}>
+              <Card.Img variant="top" src={imageUrl} />
               <Card.Body>
-                <Card.Title>Card Title</Card.Title>
+                <Card.Title>{name}</Card.Title>
                 <Card.Text>
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
+                  <strong>ID:</strong> {id}
+                  <br />
+                  <strong>Contact Number:</strong> {contactNumber}
+                  <br />
+                  <strong>Email:</strong> {email}
+                  <br />
+                  <strong>Village Assigned:</strong> {village_assigned}
+                  <br />
+                  <strong>Number of Families Visited:</strong>{" "}
+                  {number_of_family_visited}
                 </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
               </Card.Body>
             </Card>
           </Col>
         </Row>
-        
-        {/* Buttons */}
-        <Row className="mt-3">
-          <Col>
-            <Button variant="primary" size="lg" className="me-2">
-              Large button 1
+
+        <Row className="mt-3 w-100 justify-content-center">
+          <Col md={6} className="d-flex justify-content-center">
+            <Button
+              variant="success"
+              size="lg"
+              className="me-2 mb-2"
+              onClick={handleCreateClick}
+            >
+              Create Beneficiary
             </Button>
-          </Col>
-          <Col>
-            <Button variant="secondary" size="lg" className="me-2">
-              Large button 2
+            <Button
+              variant="primary"
+              size="lg"
+              className="me-2 mb-2"
+              onClick={handleReadClick}
+            >
+              View all Beneficiaries
             </Button>
-          </Col>
-          <Col>
-            <Button variant="info" size="lg">
-              Large button 3
+            <Button
+              variant="warning"
+              size="lg"
+              className="me-2 mb-2"
+              onClick={handleUpdateClick}
+            >
+              Update Beneficiary
+            </Button>
+            <Button
+              variant="danger"
+              size="lg"
+              className="mb-2"
+              onClick={handleDeleteClick}
+            >
+              Delete Beneficiary
             </Button>
           </Col>
         </Row>
