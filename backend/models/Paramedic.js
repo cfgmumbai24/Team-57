@@ -1,56 +1,54 @@
 const mongoose = require("mongoose");
+const validator = require("validator");
 const Schema = mongoose.Schema;
-const goatSchema = new Schema(
-    {
-      
-      height: {
-        type: Number,
-        required: true,
-        min: 0,
-      },
-      weight: {
-        type: Number,
-        required: true,
-        min: 0,
-      },
-      isPregnant: {
-        type: Boolean,
-        required: true,
-      },
-      isVaccinated: {
-        type: Boolean,
-        required: true,
-      },
-      gender: {
-        type: String,
-        required: true,
-        enum: ["male", "female"],
-      },
-      age: {
-        type: Number,
-        required: true,
-        min: 0,
-      },
-      remark: {
-        type: String,
-      },
-      lastCheckup: {
-        type: Date,
-        required: true,
-      },
-      isAlive: {
-        type: Boolean,
-        required: true,
-      },
-      dateDied: {
-        type: Date,
-        required: function () {
-          return !this.isAlive;
+
+const paramedicSchema = new Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    specialisation: {
+      type: String,
+      required: true,
+    },
+    experience: {
+      type: Number,
+      required: true,
+      min: [0, "Experience cannot be negative"],
+    },
+    contact: {
+      type: Number,
+      required: true,
+      validate: {
+        validator: function (v) {
+          return /^\d{10}$/.test(v.toString());
         },
+        message: (props) =>
+          `${props.value} is not a valid 10-digit phone number!`,
       },
     },
-    { timestamps: true }
-  );
-  const Goat = mongoose.model("Goat", goatSchema);
-  module.exports = Goat;
-  
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      validate: {
+        validator: validator.isEmail,
+        message: "Invalid email format",
+      },
+    },
+    next: {
+      type: String,
+      required: true,
+    },
+    travellingCost: {
+      type: Number,
+      required: true,
+      min: [0, "Travelling cost cannot be negative"],
+    },
+  },
+  { timestamps: true }
+);
+
+const Paramedic = mongoose.model("Paramedic", paramedicSchema);
+module.exports = Paramedic;

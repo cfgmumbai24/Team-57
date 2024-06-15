@@ -1,4 +1,8 @@
 {
+<<<<<<< HEAD
+=======
+  
+>>>>>>> a48d6097e822ed8003107d11f8df93c75876d2ba
   "name": "codeforgood",
   "private": true,
   "version": "0.0.0",
@@ -30,4 +34,8 @@
     "tailwindcss": "^3.4.4",
     "vite": "^5.2.0"
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> a48d6097e822ed8003107d11f8df93c75876d2ba
