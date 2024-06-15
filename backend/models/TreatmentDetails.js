@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+
 const treatmentDetailsSchema = new Schema(
   {
     treatmentDate: {
@@ -11,13 +12,13 @@ const treatmentDetailsSchema = new Schema(
       required: true,
     },
     paramedic: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Paramedic",
+      type: String,
+      ref: "Paramedic", // Referencing the Paramedic model
       required: true,
     },
     volunteer: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Volunteer",
+      type: String,
+      ref: "Volunteer", // Referencing the Volunteer model
       required: true,
     },
     goat_id: {
@@ -41,4 +42,5 @@ const TreatmentDetails = mongoose.model(
   "TreatmentDetails",
   treatmentDetailsSchema
 );
+
 module.exports = TreatmentDetails;

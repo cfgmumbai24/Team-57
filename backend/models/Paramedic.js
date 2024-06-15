@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 const Schema = mongoose.Schema;
+
 const paramedicSchema = new Schema(
   {
     name: {
@@ -24,7 +25,16 @@ const paramedicSchema = new Schema(
           return /^\d{10}$/.test(v.toString());
         },
         message: (props) =>
-          ` ${props.value} is not a valid 10-digit phone number!`,
+          `${props.value} is not a valid 10-digit phone number!`,
+      },
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      validate: {
+        validator: validator.isEmail,
+        message: "Invalid email format",
       },
     },
     next: {
@@ -39,5 +49,6 @@ const paramedicSchema = new Schema(
   },
   { timestamps: true }
 );
-const Paramedic = mongoose.model("paramedic", paramedicSchema);
+
+const Paramedic = mongoose.model("Paramedic", paramedicSchema);
 module.exports = Paramedic;

@@ -3,7 +3,7 @@ const validator = require("validator");
 const Schema = mongoose.Schema;
 const volunteerSchema = new Schema(
   {
-    name: {
+    fullName: {
       type: String,
       required: true,
     },

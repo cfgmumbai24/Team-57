@@ -9,7 +9,9 @@ const MONGO_URL = process.env.MONGO_URL;
 
 //Connect MongoDB
 mongoose
-  .connect(MONGO_URL)
+  .connect(
+    "mongodb+srv://aayushbgondaliya:GS7JRTcdQWgf2NkL@aayushbg.fjeeqha.mongodb.net/?retryWrites=true&w=majority&appName=aayushbg"
+  )
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log("Mongo Error", err));
 
