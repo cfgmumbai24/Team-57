@@ -12,8 +12,10 @@ import Home from './pages/Home/Home';
 import Signup from './pages/Signup/Signup';
 import Login from './pages/Login/Login';
 
+
 const App = () => {
   const { user } = useAuthContext();
+  // Replace with logic to get volunteer's name dynamically
   
   return (
     <Router>
@@ -27,7 +29,7 @@ const App = () => {
           path='/login'
           element={!user ? <Login /> : <Navigate to='/' />}
         />
-
+        
       </Routes>
     </Router>
   );
