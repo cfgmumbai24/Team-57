@@ -1,54 +1,43 @@
 const mongoose = require("mongoose");
+const validator = require("validator");
 const Schema = mongoose.Schema;
-const goatSchema = new Schema(
+const paramedicSchema = new Schema(
   {
-    height: {
-      type: Number,
-      required: true,
-      min: 0,
-    },
-    weight: {
-      type: Number,
-      required: true,
-      min: 0,
-    },
-    isPregnant: {
-      type: Boolean,
-      required: true,
-    },
-    isVaccinated: {
-      type: Boolean,
-      required: true,
-    },
-    gender: {
+    name: {
       type: String,
       required: true,
-      enum: ["male", "female"],
     },
-    age: {
+    specialisation: {
+      type: String,
+      required: true,
+    },
+    experience: {
       type: Number,
       required: true,
-      min: 0,
+      min: [0, "Experience cannot be negative"],
     },
-    remark: {
-      type: String,
-    },
-    lastCheckup: {
-      type: Date,
+    contact: {
+      type: Number,
       required: true,
-    },
-    isAlive: {
-      type: Boolean,
-      required: true,
-    },
-    dateDied: {
-      type: Date,
-      required: function () {
-        return !this.isAlive;
+      validate: {
+        validator: function (v) {
+          return /^\d{10}$/.test(v.toString());
+        },
+        message: (props) =>
+          ` ${props.value} is not a valid 10-digit phone number!`,
       },
+    },
+    next: {
+      type: String,
+      required: true,
+    },
+    travellingCost: {
+      type: Number,
+      required: true,
+      min: [0, "Travelling cost cannot be negative"],
     },
   },
   { timestamps: true }
 );
-const Goat = mongoose.model("Goat", goatSchema);
-module.exports = Goat;
+const Paramedic = mongoose.model("paramedic", paramedicSchema);
+module.exports = Paramedic;

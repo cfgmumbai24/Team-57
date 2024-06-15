@@ -14,7 +14,6 @@ const userSchema = new Schema(
     role: {
       enum: ['admin', 'volunteer'],
       required: true,
-
     },
     villageAssigned :{
       type: String,
