@@ -12,19 +12,3 @@ module.exports = router
 
 
 
-
-// const {handleGetAllUsers, handleGetUserById, handleUpdateUserById, handleDeleteUserById, handleCreateNewUser} = require("../controllers/user")
-
-
-// router.route("/")
-// .get(handleGetAllUsers)
-// .post(handleCreateNewUser)
-
-// //REST API with chaining
-// router.route("/:id")
-// .get(handleGetUserById)
-// .patch(handleUpdateUserById)
-// .delete(async(handleDeleteUserById))
-
-
-// module.exports = router
