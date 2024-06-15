@@ -7,14 +7,14 @@ export const useSignup = () => {
   const [isLoading, setIsLoading] = useState(false)
   const { dispatch } = useAuthContext()
 
-  const signup = async (firstName, lastName, email, password) => {
+  const signup = async (fullName, role, villageAssigned, email, password) => {
     setIsLoading(true)
     setError(null)
 
     try {
       const response = await axios.post(
         'api/user/signup',
-        { firstName, lastName, email, password }
+        { fullName, role, villageAssigned, email, password }
       )
 
       if (response.status === 200) {

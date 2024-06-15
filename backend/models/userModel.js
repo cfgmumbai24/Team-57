@@ -7,11 +7,16 @@ const Schema = mongoose.Schema
 
 const userSchema = new Schema(
   {
-    firstName: {
+    fullName: {
       type: String,
-      // required: true,
+      required: true,
     },
-    lastName: {
+    role: {
+      type: String,
+      required: true,
+
+    },
+    villageAssigned :{
       type: String,
     },
     email: {
@@ -30,8 +35,8 @@ const userSchema = new Schema(
 
 
 //static signup method
-userSchema.statics.signup = async function (firstName, lastName, email, password) {
-  if (!email || !password || !firstName) {
+userSchema.statics.signup = async function (fullName, email, password, role, villageAssigned) {
+  if (!email || !password || !fullName || !role ) {
     
     throw Error('All fields must be filled')
   }
@@ -51,8 +56,9 @@ userSchema.statics.signup = async function (firstName, lastName, email, password
 
   const salt = await bcrypt.genSalt(10)
   const hash = await bcrypt.hash(password, salt)
+  const villageAssign = villageAssigned || "Admin"
 
-  const user = await this.create({ firstName, lastName, email, password: hash })
+  const user = await this.create({ fullName, email, role, villageAssign, password: hash })
 
   return user
 }
