@@ -1,22 +1,22 @@
-import React from 'react'
+import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
   Routes,
   Navigate
-} from 'react-router-dom'
-import {useAuthContext} from "../src/hooks/useAuthContext"
+} from 'react-router-dom';
+import { useAuthContext } from "../src/hooks/useAuthContext";
 
-
-//pages
-import Home from './pages/Home/Home'
-import Signup from './pages/Signup/Signup'
-import Login from './pages/Login/Login'
-
+// Pages
+import Home from './pages/Home/Home';
+import Signup from './pages/Signup/Signup';
+import Login from './pages/Login/Login';
 
 
 const App = () => {
-  const {user} = useAuthContext();
+  const { user } = useAuthContext();
+  // Replace with logic to get volunteer's name dynamically
+  
   return (
     <Router>
       <Routes>
@@ -29,9 +29,10 @@ const App = () => {
           path='/login'
           element={!user ? <Login /> : <Navigate to='/' />}
         />
+        
       </Routes>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
