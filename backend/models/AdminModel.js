@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
+
 const Schema = mongoose.Schema;
-const volunteerSchema = new Schema(
+
+const adminSchema = new Schema(
   {
     name: {
       type: String,
@@ -18,14 +20,6 @@ const volunteerSchema = new Schema(
           `${props.value} is not a valid 10-digit phone number!`,
       },
     },
-    villageAssigned: {
-      type: String,
-      required: true,
-    },
-    numberOfFamilyVisited: {
-      type: Number,
-      required: true,
-    },
     email: {
       type: String,
       required: true,
@@ -35,13 +29,9 @@ const volunteerSchema = new Schema(
         message: (props) => `${props.value} is not a valid email!`,
       },
     },
-    query: {
-      type: String,
-      required: true,
-    },
-
   },
   { timestamps: true }
 );
-const Volunteer = mongoose.model("Volunteer", volunteerSchema);
-module.exports = Volunteer;
+
+const Admin = mongoose.model("Admin", adminSchema);
+module.exports = Admin;
