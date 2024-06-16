@@ -26,10 +26,6 @@ const treatmentDetailsSchema = new Schema(
       ref: "Goat",
       required: true,
     },
-    attendanceDetails: {
-      type: [Date],
-      required: true,
-    },
     nextVaccineDate: {
       type: Date,
       required: false,

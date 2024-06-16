@@ -17,17 +17,6 @@ const paramedicSchema = new Schema(
       required: true,
       min: [0, "Experience cannot be negative"],
     },
-    contact: {
-      type: Number,
-      required: true,
-      validate: {
-        validator: function (v) {
-          return /^\d{10}$/.test(v.toString());
-        },
-        message: (props) =>
-          `${props.value} is not a valid 10-digit phone number!`,
-      },
-    },
     email: {
       type: String,
       required: true,

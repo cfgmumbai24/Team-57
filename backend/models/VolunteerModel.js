@@ -24,6 +24,9 @@ const volunteerSchema = new Schema(
         message: (props) => `${props.value} is not a valid email!`,
       },
     },
+    attendanceDetails: {
+      type: [Date],
+    },
   },
   { timestamps: true }
 );

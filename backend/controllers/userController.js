@@ -10,6 +10,7 @@ const createToken = (_id) => {
 
 // login user
 const loginUser = async (req, res) => {
+  console.log(req);
   const { email, password } = req.body;
   try {
     const user = await User.login(email, password);
@@ -26,6 +27,7 @@ const loginUser = async (req, res) => {
 
 // signup user
 const signupUser = async (req, res) => {
+  console.log(req.body);
   const { fullName, villageAssigned, email, password, role } = req.body;
 
   try {
