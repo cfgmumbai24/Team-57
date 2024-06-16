@@ -8,8 +8,11 @@ import DeleteBeneficiary from "./pages/Beneficiary/DeleteBeneficiary";
 import Home from "./pages/Home/Home"; // Assume you have a Home component
 import Login from "./pages/Login/Login"; // Assume you have a Login component
 import Signup from "./pages/Signup/Signup"; // Assume you have a Signup component
+import { useAuthContext } from "../src/hooks/useAuthContext";
 
-function App() {
+export const App = () => {
+  const { user } = useAuthContext();
+
   const volunteer = {
     id: 1,
     name: "John Doe",
@@ -34,9 +37,13 @@ function App() {
         <Route path="/beneficiary/update" element={<UpdateBeneficiary />} />
         <Route path="/beneficiary/read" element={<ReadBeneficiary />} />
         <Route path="/beneficiary/delete" element={<DeleteBeneficiary />} />
+        <Route
+          path="/login"
+          element={!user ? <Login /> : <Navigate to="/" />}
+        />
       </Routes>
     </Router>
   );
-}
+};
 
-export default App;
+// export default App;
