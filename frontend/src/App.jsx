@@ -30,10 +30,17 @@ function App() {
           path="/volunteer"
           element={<Volunteer volunteer={volunteer} />}
         />
+<<<<<<< HEAD
         <Route path="/beneficiary/create" element={<AddBeneficiary />} />
         <Route path="/beneficiary/update" element={<UpdateBeneficiary />} />
         <Route path="/beneficiary/read" element={<ReadBeneficiary />} />
         <Route path="/beneficiary/delete" element={<DeleteBeneficiary />} />
+=======
+        <Route
+          path='/login'
+          element={!user ? <Login /> : <Navigate to='/' />}
+        />
+>>>>>>> a2183d478ff152b687f2f293bed7ed6654ed1157
       </Routes>
     </Router>
   );

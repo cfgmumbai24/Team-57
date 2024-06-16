@@ -1,19 +1,13 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
+
 const Schema = mongoose.Schema;
-const volunteerSchema = new Schema(
+
+const adminSchema = new Schema(
   {
     fullName: {
       type: String,
       required: true,
-    },
-    villageAssigned: {
-      type: String,
-      required: true,
-    },
-    numberOfFamilyVisited: {
-      type: Number,
-      default: 0,
     },
     email: {
       type: String,
@@ -27,5 +21,6 @@ const volunteerSchema = new Schema(
   },
   { timestamps: true }
 );
-const Volunteer = mongoose.model("Volunteer", volunteerSchema);
-module.exports = Volunteer;
+
+const Admin = mongoose.model("Admin", adminSchema);
+module.exports = Admin;
