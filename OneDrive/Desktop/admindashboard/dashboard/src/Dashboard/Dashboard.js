@@ -1,10 +1,10 @@
 import React from 'react';
 import { Grid, Paper, Typography, AppBar, Toolbar } from '@mui/material';
-import LineChart from './LineChart';
-import BarChart from './BarChart';
-import StatCard from './StatCard';
-import PieChart from './PieChart';
-import ProgressCircle from './ProgressCircle';
+import LineChart from '../LineChart';
+import BarChart from '../BarChart/BarChart';
+import StatCard from '../StatCard';
+import PieChart from '../PieChart';
+import ProgressCircle from '../ProgressCircle';
 import './Dashboard.css';
 
 const Dashboard = () => {

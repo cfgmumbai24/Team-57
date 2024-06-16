@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css'
 import App from './App';
 import NavigationBar from './NavigationBar';
-import Dashboard from './Dashboard';
+import Dashboard from './Dashboard/Dashboard';
 // import StatCard from './StatCard';
 // import LineChart from './LineChart';
 // import BarChart from './BarChart';

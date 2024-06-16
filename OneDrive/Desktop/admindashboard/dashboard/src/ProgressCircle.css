@@ -1,0 +1,30 @@
+/* src/components/ProgressCircle.css */
+
+.progress-circle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .progress-circle-heading {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .village-select {
+    margin-bottom: 20px;
+    width: 200px;
+  }
+  
+  .progress-circle {
+    position: relative;
+  }
+  
+  .progress-circle-background {
+    color: lightblue;
+  }
+  
+  .progress-circle-foreground {
+    color: blue;
+  }
+  
