@@ -1,0 +1,17 @@
+/* src/components/Question.css */
+.question-card {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.like-button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
